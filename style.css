@@ -1,0 +1,357 @@
+body {
+    /* Font chữ thân thiện */
+    font-family: Arial, sans-serif;
+    /* Loại bỏ lề mặc định của trình duyệt */
+    margin: 0;
+    padding: 0;
+    /* Màu nền nhạt, giống các mạng xã hội phổ biến */
+    background-color: #f0f2f5; 
+    color: #1c1e21;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 1. THANH ĐIỀU HƯỚNG (HEADER) */
+/* ---------------------------------------------------------------------- */
+.navbar {
+    background-color: white; /* Header màu trắng */
+    color: #1c1e21;
+    padding: 0 22px; /* Giảm padding dọc */
+    height: 86px; /* Chiều cao cố định */
+    display: flex;
+    justify-content: space-between; /* Căn các phần Trái, Giữa, Phải */
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Shadow mỏng */
+}
+
+/* Phần Trái */
+.navbar-left {
+    display: flex;
+    flex-direction: column; /* Đặt các phần tử con theo chiều dọc (cột) */
+    align-items: flex-start; /* Căn chỉnh nội dung sang trái */
+    gap: 4px; /* Thêm khoảng cách giữa Logo và Thanh tìm kiếm */
+}
+
+/* Căn chỉnh Logo cho đẹp hơn */
+.navbar-left .logo {
+    color: #0866ff;
+    font-size: 28px;
+    font-weight: bold;
+    /* Bỏ margin-right không cần thiết nữa */
+    margin-right: 0; 
+}
+
+.search-box input {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 50px;
+    width: 240px;
+    background-color: #f0f2f5; /* Màu xám nhạt */
+    font-size: 15px;
+}
+
+/* Phần Giữa (Thanh Điều hướng Chính) */
+.navbar-center {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; /* Cho phép nó chiếm phần lớn không gian giữa */
+    max-width: 600px; /* Giới hạn độ rộng thanh icon */
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px; /* Chiều cao icon */
+    width: 120px;
+    font-size: 24px;
+    text-decoration: none;
+    color: #65676b; /* Màu icon mờ */
+    border-bottom: 3px solid transparent; /* Tạo chỗ cho gạch chân */
+    transition: all 0.2s;
+}
+
+.nav-icon:hover {
+    background-color: #f0f2f5;
+    border-radius: 8px;
+}
+
+.nav-icon.active {
+    color: #0866ff; /* Icon đang hoạt động màu xanh */
+    border-bottom: 3px solid #0866ff;
+}
+
+/* Phần Phải (Controls) */
+.navbar-right .user-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-icon, .control-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #e4e6eb; /* Màu nền icon */
+    color: #1c1e21;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.control-avatar {
+    background-color: #0866ff;
+    color: white;
+    font-size: 14px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 2. BỐ CỤC CHÍNH (MAIN CONTAINER) - QUAN TRỌNG NHẤT CHO BỐ CỤC 3 CỘT */
+/* ---------------------------------------------------------------------- */
+.main-container {
+    /* BẮT BUỘC: Dùng Flexbox để sắp xếp Sidebar, Feed ngang hàng */
+    display: flex;
+    max-width: 1200px;
+    /* Canh giữa vùng nội dung chính */
+    margin: 20px auto; 
+    /* Tạo khoảng cách giữa các cột */
+    gap: 20px; 
+}
+
+/* ---------------------------------------------------------------------- */
+/* 3. CÁC SIDEBAR (TRÁI & PHẢI) */
+/* ---------------------------------------------------------------------- */
+.left-sidebar, .right-sidebar {
+    width: 280px;
+    padding: 10px;
+    /* Giúp sidebar giữ nguyên vị trí khi cuộn trang */
+    position: sticky;
+    top: 60px; 
+    height: fit-content; /* Chiều cao tự co giãn theo nội dung */
+}
+
+.left-sidebar {
+    width: 280px;
+    /* XÓA DÒNG NÀY ĐỂ BỎ KHOẢNG CÁCH BAN ĐẦU */ 
+    position: sticky;
+    top: 66px; 
+    height: fit-content;
+}
+.sidebar-item {
+    display: flex; /* Dùng Flexbox để căn icon và chữ */
+    align-items: center;
+    text-decoration: none;
+    color: #1c1e21;
+    font-size: 15px;
+    font-weight: 500;
+    
+    /* PADDING CHO TỪNG MỤC (Tạo khoảng cách sát lề) */
+    padding: 8px 16px; /* 8px trên dưới, 16px trái phải */
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: background-color 0.15s;
+}
+
+.sidebar-item:hover {
+    background-color: #e4e6eb; /* Màu xám nhạt khi hover */
+}
+
+/* Style cho Icon */
+.sidebar-icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 28px;
+    font-size: 20px; /* Kích thước icon (nếu dùng emoji) */
+    /* Nếu là ảnh avatar */
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sidebar-divider {
+    border: none;
+    border-top: 1px solid #ced0d4;
+    margin: 8px 16px; /* Căn chỉnh thanh ngang */
+}
+
+/* ---------------------------------------------------------------------- */
+/* 4. KHU VỰC FEED (BẢNG TIN) */
+/* ---------------------------------------------------------------------- */
+.feed-content {
+    /* Chiếm phần còn lại của không gian giữa 2 sidebar */
+    flex-grow: 1; 
+    max-width: 550px; /* Giới hạn độ rộng của các bài đăng */
+}
+
+/* Khu vực Tạo bài viết */
+.post-creator {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    /* Thiết lập Flex/Grid nếu cần căn chỉnh nút đăng bài */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Đẩy nút đăng bài sang phải */
+}
+
+.post-creator textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    padding: 10px 0;
+    outline: none;
+    font-size: 16px;
+}
+
+#post-btn {
+    background-color: #4267B2;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5. BÀI ĐĂNG (POST) CÓ HÌNH ẢNH */
+/* ---------------------------------------------------------------------- */
+.post {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+}
+
+/* Thông tin người dùng (Avatar + Tên) */
+.post-user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.post-header-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-username {
+    font-weight: bold;
+    color: #1c1e21;
+    font-size: 14px;
+}
+
+.post-time {
+    font-size: 12px;
+    color: #606770;
+}
+
+/* Nội dung văn bản */
+.post-body-text {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.post-body-text ul {
+    margin: 10px 0 10px 20px;
+    padding: 0;
+}
+.post-body-text li {
+    margin-bottom: 5px;
+}
+
+/* Hình ảnh đính kèm */
+.post-image-container {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* Đảm bảo hình ảnh không tràn và có góc bo nhẹ */
+    overflow: hidden; 
+    border-radius: 4px;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Thanh tương tác (Thích/Bình luận/Chia sẻ) */
+.post-actions {
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.post-actions .action-btn {
+    color: #606770;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.post-actions .action-btn:hover {
+    background-color: #f2f2f2;
+}
+
+/* Style cho nút "Đã thích" (Sử dụng bởi JavaScript) */
+.post-actions .liked {
+    color: #4267B2; 
+    font-weight: bold;
+    background-color: transparent !important;
+}
+
+/* Style bổ sung cho Hashtags */
+.post-hashtags {
+    display: block;
+    margin-top: 10px;
+    color: #4267B2;
+    font-size: 13px;
+    line-height: 1.5;
+}
+.username-wrapper {
+    display: flex;
+    align-items: center; /* Căn chỉnh theo chiều dọc */
+    gap: 4px; /* Khoảng cách giữa tên và tích xanh */
+}
+
+/* Style cho biểu tượng tích xanh (Tạo một hình tròn xanh) */
+.verified-badge {
+    /* Tạo màu nền xanh và màu chữ trắng */
+    background-color: #4267B2; 
+    color: white; 
+    
+    /* Thiết lập kích thước và bo tròn */
+    font-size: 10px;
+    font-weight: bold;
+    width: 14px;
+    height: 14px;
+    line-height: 14px; /* Căn chữ '✓' vào giữa */
+    text-align: center;
+    border-radius: 50%; /* Tạo hình tròn */
+    
+    /* Đảm bảo tích xanh không bị co lại */
+    flex-shrink: 0; 
+    display: inline-block;
+}
